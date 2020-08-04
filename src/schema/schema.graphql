@@ -1,0 +1,44 @@
+type Query {
+  articleDetail(id: ID!): Article
+  articles: [Article!]!
+
+  userDetail(id: ID!): User
+  users: [User!]!
+  currentUser: User
+}
+
+type Mutation {
+  createUser(firstname: String, lastname: String, email: String!, password: String!): User
+  updateUser(id: ID!, firstname: String, lastname: String, email: String!, password: String): User
+  deleteUser(id: ID!): User
+  register(email: String!, password: String!): User!
+  login(email: String!, password: String!): LoginResponse!
+  logout: String!
+
+  createArticle(title: String!, content: String!, userId: ID): Article
+  updateArticle(id: ID!, title: String, content: String): Article
+  deleteArticle(id: ID!): Article
+}
+
+type LoginResponse {
+  token: String
+  user: User
+}
+
+type User {
+  id: ID!
+  firstname: String
+  lastname: String
+  email: String!
+  password: String!
+  articles: [Article]
+}
+
+type Article {
+  id: ID!
+  title: String!
+  content: String!
+  user: User
+  userId: ID
+  createdAt: String
+}

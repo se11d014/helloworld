@@ -1,0 +1,17 @@
+type User {
+  id: ID! @id
+  firstname: String
+  lastname: String
+  email: String! @unique
+  password: String!
+  articles: [Article]
+}
+
+type Article {
+  id: ID! @id
+  title: String!
+  content: String!
+  user: User @relation(fields: [userId], references: [id])
+  userId: ID
+  createdAt: DateTime
+}

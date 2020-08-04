@@ -1,0 +1,6 @@
+endpoint: https://eu1.prisma.sh/dse11d014-c1cf69/helloworld/dev
+datamodel: ./src/db/datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ./src/generated/prisma-client/
